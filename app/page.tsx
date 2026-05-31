@@ -1,66 +1,54 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main
+      style={{
+        fontFamily: "system-ui, -apple-system, sans-serif",
+        maxWidth: 720,
+        margin: "60px auto",
+        padding: "0 20px",
+        lineHeight: 1.55,
+        color: "#111",
+      }}
+    >
+      <h1 style={{ margin: "0 0 8px" }}>MCP Everglow</h1>
+      <p style={{ color: "#555", margin: "0 0 32px" }}>
+        Servidor de MCPs (Model Context Protocol) para conectar herramientas a
+        ChatGPT, Claude y otros clientes que soporten Streamable HTTP.
+      </p>
+
+      <h2 style={{ fontSize: 18, margin: "0 0 8px" }}>Endpoints disponibles</h2>
+      <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 32 }}>
+        <thead>
+          <tr style={{ textAlign: "left", borderBottom: "1px solid #eee" }}>
+            <th style={{ padding: "8px 4px" }}>Servidor</th>
+            <th style={{ padding: "8px 4px" }}>URL</th>
+            <th style={{ padding: "8px 4px" }}>Qué hace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style={{ borderBottom: "1px solid #f5f5f5" }}>
+            <td style={{ padding: "10px 4px" }}>
+              <code>openclaw-whatsapp</code>
+            </td>
+            <td style={{ padding: "10px 4px" }}>
+              <code>/openclaw-whatsapp/mcp</code>
+            </td>
+            <td style={{ padding: "10px 4px" }}>
+              Envía un mensaje al WhatsApp de Héctor vía webhook.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 style={{ fontSize: 18, margin: "0 0 8px" }}>Conectar en ChatGPT</h2>
+      <ol style={{ paddingLeft: 20 }}>
+        <li>Abre Settings → Connectors → New connector</li>
+        <li>
+          Pega la URL completa del endpoint, por ejemplo{" "}
+          <code>https://&lt;tu-dominio&gt;/openclaw-whatsapp/mcp</code>
+        </li>
+        <li>Guarda y prueba la tool desde un chat.</li>
+      </ol>
+    </main>
   );
 }
