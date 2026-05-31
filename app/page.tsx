@@ -31,7 +31,7 @@ export default function Home() {
               <code>openclaw-whatsapp</code>
             </td>
             <td style={{ padding: "10px 4px" }}>
-              <code>/openclaw-whatsapp/mcp</code>
+              <code>/openclaw-whatsapp/&lt;token&gt;/mcp</code>
             </td>
             <td style={{ padding: "10px 4px" }}>
               Envía un mensaje al WhatsApp de Héctor vía webhook.
@@ -42,21 +42,23 @@ export default function Home() {
 
       <h2 style={{ fontSize: 18, margin: "0 0 8px" }}>Conectar en ChatGPT</h2>
       <ol style={{ paddingLeft: 20 }}>
-        <li>Abre Settings → Connectors → New connector</li>
         <li>
-          Pega la URL completa del endpoint, por ejemplo{" "}
-          <code>https://&lt;tu-dominio&gt;/openclaw-whatsapp/mcp</code>
+          Activa <strong>Developer Mode</strong> en ChatGPT (Settings →
+          Connectors → Advanced).
         </li>
+        <li>New connector → MCP server.</li>
         <li>
-          En el método de autenticación selecciona <strong>Bearer token</strong>{" "}
-          (o &quot;Custom&quot; / &quot;API key&quot; según el cliente) y pega
-          el token configurado para ese servidor.
+          Pega la URL completa incluyendo el token, por ejemplo{" "}
+          <code>
+            https://mcp-everglow.vercel.app/openclaw-whatsapp/alan/mcp
+          </code>
         </li>
+        <li>Authentication: <strong>No authentication</strong> (el token va en la URL).</li>
         <li>Guarda y prueba la tool desde un chat.</li>
       </ol>
 
       <p style={{ color: "#777", fontSize: 13, marginTop: 24 }}>
-        Todos los endpoints requieren <code>Authorization: Bearer &lt;token&gt;</code>.
+        El token forma parte de la URL: tratar el enlace como secreto.
       </p>
     </main>
   );
