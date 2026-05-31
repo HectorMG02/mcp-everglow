@@ -1,10 +1,12 @@
-import { createMcpHandler } from "mcp-handler";
+import { createMcpHandler, withMcpAuth } from "mcp-handler";
 import { z } from "zod";
 
 const WEBHOOK_URL =
   process.env.OPENCLAW_WHATSAPP_WEBHOOK_URL ?? "https://webhook.everglow.es/";
 
-const handler = createMcpHandler(
+const STATIC_TOKEN = process.env.OPENCLAW_WHATSAPP_TOKEN ?? "alan";
+
+const mcpHandler = createMcpHandler(
   (server) => {
     server.registerTool(
       "send_whatsapp",
@@ -68,6 +70,19 @@ const handler = createMcpHandler(
     maxDuration: 60,
     verboseLogs: false,
   }
+);
+
+const handler = withMcpAuth(
+  mcpHandler,
+  (_req, bearerToken) => {
+    if (bearerToken !== STATIC_TOKEN) return undefined;
+    return {
+      token: bearerToken,
+      clientId: "openclaw-whatsapp",
+      scopes: ["send_whatsapp"],
+    };
+  },
+  { required: true }
 );
 
 export { handler as GET, handler as POST, handler as DELETE };

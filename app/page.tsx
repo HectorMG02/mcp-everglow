@@ -47,8 +47,17 @@ export default function Home() {
           Pega la URL completa del endpoint, por ejemplo{" "}
           <code>https://&lt;tu-dominio&gt;/openclaw-whatsapp/mcp</code>
         </li>
+        <li>
+          En el método de autenticación selecciona <strong>Bearer token</strong>{" "}
+          (o &quot;Custom&quot; / &quot;API key&quot; según el cliente) y pega
+          el token configurado para ese servidor.
+        </li>
         <li>Guarda y prueba la tool desde un chat.</li>
       </ol>
+
+      <p style={{ color: "#777", fontSize: 13, marginTop: 24 }}>
+        Todos los endpoints requieren <code>Authorization: Bearer &lt;token&gt;</code>.
+      </p>
     </main>
   );
 }
